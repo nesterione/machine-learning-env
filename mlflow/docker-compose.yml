@@ -6,7 +6,7 @@ services:
     volumes:
       - ./data/minio:/data
     ports:
-      - "9999:9000"
+      - "9998:9000"
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
