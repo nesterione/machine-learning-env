@@ -1,0 +1,33 @@
+version: '3.0'
+
+services:
+  minio:
+    image: minio/minio:RELEASE.2019-04-23T23-50-36Z
+    volumes:
+      - ./data/minio:/data
+    ports:
+      - "9999:9000"
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+    command: server /data
+  mlflow:
+    build: mlflow-server
+    container_name: mlflow
+    environment:
+      DEFAULT_ARTIFACT_ROOT: s3://mlflow/artefacts
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+      AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_KEY}
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "10"
+    ports:
+      - 5000:5000
+    links: 
+      - minio
+    volumes:
+      - "./data/mlruns:/mlruns"
