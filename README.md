@@ -11,3 +11,4 @@ This repository contains ready-to-use docker-compose files with different useful
 ## Examples 
 
 * https://github.com/nesterione/dvc-example - example of usage DVC (used minio as artefact storage)
+* https://github.com/nesterione/mlflow-example - example of usage MLFlow
