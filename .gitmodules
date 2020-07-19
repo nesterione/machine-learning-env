@@ -4,3 +4,6 @@
 [submodule "examples/mlflow-example"]
 	path = examples/mlflow-example
 	url = https://github.com/nesterione/mlflow-example.git
+[submodule "examples/dvc-mlflow-e2e-example"]
+	path = examples/dvc-mlflow-e2e-example
+	url = https://github.com/nesterione/dvc-mlflow-e2e-example.git
